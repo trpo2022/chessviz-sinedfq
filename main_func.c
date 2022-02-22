@@ -24,4 +24,12 @@ int main()
         scanf("%1c", &finalPosN[i]);
     }
     swap(a, startPosN, finalPosN);
+    
+    for (i = 0; i < 9; i++){
+        for (j = 0; j < 9; j++){
+            printf("%3c", a[i][j]);
+        }
+    printf("\n");
+    }
+
 }
