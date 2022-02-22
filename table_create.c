@@ -25,7 +25,7 @@ void chess(char a[][9])
     int l;
 
     for (k = 0; k < 9; k++){
-        a[2][k] = 'n';
+        a[2][k] = 'p';
     }
     
     for(k = 3; k < 7; k++){
@@ -35,7 +35,7 @@ void chess(char a[][9])
     }
     
     for (l = 0; l < 9; l++){
-        a[7][l] = 'N';
+        a[7][l] = 'P';
     }
     a[8][0] = ' ';
     a[8][1] = 'R';
