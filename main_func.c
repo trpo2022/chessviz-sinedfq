@@ -17,7 +17,6 @@ int main()
     }
 
     int n = 2;
-    printf("\n");
     char startPosN[n];
     char finalPosN[n];
     for (int i = 0; i < n; i++){
