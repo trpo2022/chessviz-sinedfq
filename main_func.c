@@ -4,29 +4,31 @@
 
 int main()
 {
-    char a[9][9] = {};
+    int size = 9;
+    char a[size][size];
     chess(a);
         
     int i, j;
-    for (i = 0; i < 9; i++){
-        for (j = 0; j < 9; j++){
+    for (i = 0; i < size; i++){
+        for (j = 0; j < size; j++){
             printf("%3c", a[i][j]);
         }
     printf("\n");
     }
 
-    char startPosN[2];
-    char finalPosN[2];
-    for (int i = 0; i < 2; i++){
+    int n = 2;
+    char startPosN[n];
+    char finalPosN[n];
+    for (int i = 0; i < n; i++){
         scanf("%1c", &startPosN[i]);
     }
-    for (int i = 0; i < 2; i++){
+    for (int i = 0; i < n; i++){
         scanf("%1c", &finalPosN[i]);
     }
-    swap(a, startPosN, finalPosN);
+    swap(size, a, n, startPosN, finalPosN);
     
-    for (i = 0; i < 9; i++){
-        for (j = 0; j < 9; j++){
+    for (i = 0; i < size; i++){
+        for (j = 0; j < size; j++){
             printf("%3c", a[i][j]);
         }
     printf("\n");

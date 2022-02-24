@@ -1,10 +1,12 @@
 #include <stdio.h>
 
 
-void swap(char a[][9], char firstpos[2], char secondpos[2])
+void swap(int size, char a[size][size], int n,  char firstpos[n], char secondpos[n])
 {
-    int startFirstIndex = firstpos[0] - 96;
-    int startSecondIndex = 8 - ((firstpos[1] - 56)*(-1));
+    int ALetter = 96; // A - ASCII
+    int ANumber = 56;
+    int startFirstIndex = firstpos[0] - ALetter;
+    int startSecondIndex = 8 - ((firstpos[1] - ANumber)*(-1));
     
     if (startFirstIndex < 0){
         printf("Error\n");
@@ -27,8 +29,8 @@ void swap(char a[][9], char firstpos[2], char secondpos[2])
     printf("%d - %d\n",startFirstIndex, startSecondIndex);
     printf("%c\n", a[startSecondIndex][startFirstIndex]);
     
-    int finalFirstIndex = secondpos[0] - 96;
-    int finalSecondIndex = 8 - ((secondpos[1] - 56)*(-1));
+    int finalFirstIndex = secondpos[0] - ALetter;
+    int finalSecondIndex = 8 - ((secondpos[1] - ANumber)*(-1));
     
     if (finalFirstIndex < 0){
         printf("Error\n");
