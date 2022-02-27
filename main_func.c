@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "table_create.c"
-#include "swap_pos.c"
+#include "functions.h"
+
 
 int main()
 {
