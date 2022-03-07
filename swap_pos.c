@@ -1,5 +1,27 @@
 #include <stdio.h>
 
+void check(int FirstIndex, int startSecond)
+{
+    if (FirstIndex < 0){
+        printf("Error\n");
+        return;
+    }
+    if (startSecond < 0){
+        printf("Error\n");
+        return;
+    }
+    if (FirstIndex > 8){
+        printf("Error\n");
+        return;
+    }
+    if (startSecond > 8){
+        printf("Error\n");
+        return;
+    }    
+}
+
+
+
 
 void swap(int size, char a[size][size], int n,  char firstpos[n], char secondpos[n])
 {
@@ -8,23 +30,7 @@ void swap(int size, char a[size][size], int n,  char firstpos[n], char secondpos
     int startFirstIndex = firstpos[0] - ALetter;
     int startSecondIndex = 8 - ((firstpos[1] - ANumber)*(-1));
     
-    if (startFirstIndex < 0){
-        printf("Error\n");
-        return;
-    }
-    if (startSecondIndex < 0){
-        printf("Error\n");
-        return;
-    }
-    if (startFirstIndex > 8){
-        printf("Error\n");
-        return;
-    }
-    if (startSecondIndex > 8){
-        printf("Error\n");
-        return;
-    }    
-
+    check(startFirstIndex, startSecondIndex);
 
     printf("%d - %d\n",startFirstIndex, startSecondIndex);
     printf("%c\n", a[startSecondIndex][startFirstIndex]);
@@ -32,23 +38,7 @@ void swap(int size, char a[size][size], int n,  char firstpos[n], char secondpos
     int finalFirstIndex = secondpos[0] - ALetter;
     int finalSecondIndex = 8 - ((secondpos[1] - ANumber)*(-1));
     
-    if (finalFirstIndex < 0){
-        printf("Error\n");
-        return;
-    }
-    if (finalSecondIndex < 0){
-        printf("Error\n");
-        return;
-    }
-    if (finalFirstIndex > 8){
-        printf("Error\n");
-        return;
-    }
-    if (finalSecondIndex > 8){
-        printf("Error\n");
-        return;
-    }
-    
+    check(finalFirstIndex, finalSecondIndex);
 
     printf("%c\n", a[finalSecondIndex][finalFirstIndex]);
 
