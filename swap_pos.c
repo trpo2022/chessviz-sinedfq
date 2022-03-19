@@ -3,25 +3,22 @@
 void check(int FirstIndex, int startSecond)
 {
     if (FirstIndex < 0){
-        printf("Error\n");
+        printf("Ошибка, выход за границу шахматной доски\n");
         return;
     }
     if (startSecond < 0){
-        printf("Error\n");
+        printf("Ошибка, выход за границу шахматной доски\n");
         return;
     }
     if (FirstIndex > 8){
-        printf("Error\n");
+        printf("Ошибка, выход за границу шахматной доски\n");
         return;
     }
     if (startSecond > 8){
-        printf("Error\n");
+        printf("Ошибка, выход за границу шахматной доски\n");
         return;
     }    
 }
-
-
-
 
 void swap(int size, char a[size][size], int n,  char firstpos[n], char secondpos[n])
 {
