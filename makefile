@@ -1,2 +1,2 @@
-bin/main_func.exe: src/main/main_func.c src/swapFunction/swap_pos.c src/board/table_create.c
+main_func.exe: src/main/main_func.c src/swapFunction/swap_pos.c src/board/table_create.c
 	gcc -Wall -Werror src/main/main_func.c src/swapFunction/swap_pos.c src/board/table_create.c  -o bin/main_func.exe
