@@ -1,4 +1,3 @@
-main
-main_func.exe
-board.o
-swapFunction.o
+*.o
+*.d
+*.a
