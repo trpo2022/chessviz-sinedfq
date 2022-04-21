@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "functions.h"
 
-void checkMove(int size, char a[size][size], int n, char firstpos[n], int SsecondIndex, int FsecondIndex)
+int checkMove(int size, char a[size][size], int n, char firstpos[n], int SsecondIndex, int FsecondIndex)
 {
     int ALetter = 96; // A - ASCII
     int ANumber = 56;
@@ -9,13 +9,13 @@ void checkMove(int size, char a[size][size], int n, char firstpos[n], int Ssecon
         int temp = SsecondIndex - FsecondIndex;
         if (temp > 2){
             printf("Фигура не можешь ходить >2 шагов");
-            return;
+            return 0;
         }
         if (temp == 0){
             printf("Фигура не делает шаг");
-            return;
+            return 0;
         }
-    }
+    } else return 1;
 }
 
 
@@ -55,7 +55,7 @@ void swap(int size, char a[size][size], int n,  char firstpos[n], char secondpos
     int finalSecondIndex = 8 - ((secondpos[1] - ANumber)*(-1));
     
     check(finalFirstIndex, finalSecondIndex);
-    
+    checkMove(size, a, n, firstpos[0], startSecondIndex, finalSecondIndex);
 
 
 
