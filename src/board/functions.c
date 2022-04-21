@@ -1,6 +1,24 @@
 #include <stdio.h>
 #include "functions.h"
 
+void checkMove(int size, char a[size][size], int n, char firstpos[n], int SsecondIndex, int FsecondIndex)
+{
+    int ALetter = 96; // A - ASCII
+    int ANumber = 56;
+    if ((firstpos[0] - ALetter) == 2 || (firstpos[0] - ALetter) == 7 ){
+        int temp = SsecondIndex - FsecondIndex;
+        if (temp > 2){
+            printf("Фигура не можешь ходить >2 шагов");
+            return;
+        }
+        if (temp == 0){
+            printf("Фигура не делает шаг");
+            return;
+        }
+    }
+}
+
+
 void check(int FirstIndex, int startSecond)
 {
     if (FirstIndex < 0){
@@ -37,6 +55,9 @@ void swap(int size, char a[size][size], int n,  char firstpos[n], char secondpos
     int finalSecondIndex = 8 - ((secondpos[1] - ANumber)*(-1));
     
     check(finalFirstIndex, finalSecondIndex);
+    
+
+
 
     printf("%c\n", a[finalSecondIndex][finalFirstIndex]);
 
