@@ -50,13 +50,8 @@ CTEST(read_txt, checkMoveUncorrect)
     int size = 9;
     char a[size][size];
     chess(a);
-
-
     int startSecondIndex = 8 - ((positions[1] - ANumber)*(-1));
-    
-
     int finalSecondIndex = 8 - ((positions[4] - ANumber)*(-1));
-
     int temp = checkMove(8, positions, startSecondIndex, finalSecondIndex);
     
     ASSERT_EQUAL(res_error, temp);
