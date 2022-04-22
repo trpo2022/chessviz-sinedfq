@@ -4,13 +4,13 @@ CCFLAGS = -Wall -Wextra -Wshadow -Wno-unused-parameter
 all: bin/main
 
 bin/main: obj/src/main/main.o obj/src/main/functions.a
-	gcc  $(CFLAGS) -o $@ $^ -lm
+	gcc -I src $(CFLAGS) -o $@ $^ -lm
 
 obj/src/main/main.o: src/main/main_func.c
-	gcc -c  src $(CFLAGS) -o $@ $< -lm
+	gcc -c -I src $(CFLAGS) -o $@ $< -lm
 
 obj/src/main/functions.o: src/board/functions.c
-	gcc -c  src $(CFLAGS) -o $@ $< -lm
+	gcc -c -I src $(CFLAGS) -o $@ $< -lm
 
 obj/src/main/functions.a: obj/src/main/functions.o
 	ar rcs $@ $^
@@ -19,7 +19,7 @@ obj/src/main/functions.a: obj/src/main/functions.o
 test: bin/test/main
 
 bin/test/main: obj/test/board_test.o obj/test/main.o
-	gcc  $(CFLAGS) -o $@ $^ -lm 
+	gcc -I $(CFLAGS) -o $@ $^ -lm 
 
 obj/test/board_test.o: test/board_test.c
 	gcc -c $(CCFLAGS) -o $@ 	$< -lm
