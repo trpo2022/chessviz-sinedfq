@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include "functions.h"
 
-int checkMove(int size, char a[size][size], int n, char firstpos[n], int SsecondIndex, int FsecondIndex)
+int checkMove(int n, char firstpos[n], int SsecondIndex, int FsecondIndex)
 {
     int ALetter = 96; // A - ASCII
-    int ANumber = 56;
     if ((firstpos[0] - ALetter) == 2 || (firstpos[0] - ALetter) == 7 ){
         int temp = SsecondIndex - FsecondIndex;
         if (temp > 2){
@@ -16,7 +15,10 @@ int checkMove(int size, char a[size][size], int n, char firstpos[n], int Ssecond
             return 0;
         }
     } else return 1;
+    
+    return 0;
 }
+
 
 
 void check(int FirstIndex, int startSecond)
@@ -55,7 +57,7 @@ void swap(int size, char a[size][size], int n,  char firstpos[n], char secondpos
     int finalSecondIndex = 8 - ((secondpos[1] - ANumber)*(-1));
     
     check(finalFirstIndex, finalSecondIndex);
-    checkMove(size, a, n, firstpos[0], startSecondIndex, finalSecondIndex);
+    checkMove(n, firstpos, startSecondIndex, finalSecondIndex);
 
 
 
