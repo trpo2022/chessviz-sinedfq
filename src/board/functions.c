@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "functions.h"
+
 
 int checkMove(int n, char firstpos[n], int SsecondIndex, int FsecondIndex)
 {
