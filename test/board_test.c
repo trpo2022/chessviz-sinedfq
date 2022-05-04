@@ -6,14 +6,20 @@
 
 CTEST(read_txt, simple_read_file)
 {
+    
     FILE* file = fopen("test.txt", "r");
+    if (file == NULL){
+        printf("-------\n");
+    }
     char result[6];
-    fgets(result, 6, file);
+    if (fgets(result, 6, file) == NULL){
+        printf("Error \n");
+        fclose(file);
+    }
     fclose(file);
-
-    const char expected[6] = {'a', '7', 'a', '6'};
-
+    const char expected[6] = {'e', '2', 'e', '4'};
     ASSERT_STR(result, expected);
+
 }
 
 CTEST(read_txt, checkMoveCorrect)
