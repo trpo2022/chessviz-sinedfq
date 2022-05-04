@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 int checkMove(int n, char firstpos[n], int SsecondIndex, int FsecondIndex)
 {
     int ALetter = 96; // A - ASCII
