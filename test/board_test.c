@@ -7,7 +7,7 @@
 CTEST(read_txt, simple_read_file)
 {
     
-    FILE* file = fopen("test.txt", "r");
+    FILE* file = fopen("correct.txt", "r");
     if (file == NULL){
         printf("-------\n");
     }
@@ -17,16 +17,16 @@ CTEST(read_txt, simple_read_file)
         fclose(file);
     }
     fclose(file);
-    const char expected[6] = {'e', '2', 'e', '4'};
+    const char expected[6] = {'a', '7', 'a', '6'};
     ASSERT_STR(result, expected);
 
 }
 
 CTEST(read_txt, checkMoveCorrect)
 {
-    FILE* file = fopen("test.txt", "r");
-    char positions[8];
-    fgets(positions, 8, file);
+    FILE* file = fopen("correct.txt", "r");
+    char positions[6];
+    fgets(positions, 6, file);
     fclose(file);
     
     int ANumber = 56;
@@ -36,20 +36,20 @@ CTEST(read_txt, checkMoveCorrect)
     chess(a);
 
     int startSecondIndex = 8 - ((positions[1] - ANumber)*(-1));
-    
-    int finalSecondIndex = 8 - ((positions[4] - ANumber)*(-1));
+    int finalSecondIndex = 8 - ((positions[3] - ANumber)*(-1));
 
-    int temp = checkMove(8, positions, startSecondIndex, finalSecondIndex);
-    
+    printf("%d [%c] - %d [%c] \n", finalSecondIndex, positions[1], startSecondIndex, positions[2]);
+
+    int temp = checkMove(finalSecondIndex, startSecondIndex);
     ASSERT_EQUAL(res_error, temp);
 }
 
 
 CTEST(read_txt, checkMoveUncorrect)
 {
-    FILE* file = fopen("test.txt", "r");
-    char positions[8];
-    fgets(positions, 8, file);
+    FILE* file = fopen("uncorrect.txt", "r");
+    char positions[6];
+    fgets(positions, 6, file);
     fclose(file);
     
     int ANumber = 56;
@@ -58,8 +58,55 @@ CTEST(read_txt, checkMoveUncorrect)
     char a[size][size];
     chess(a);
     int startSecondIndex = 8 - ((positions[1] - ANumber)*(-1));
-    int finalSecondIndex = 8 - ((positions[4] - ANumber)*(-1));
-    int temp = checkMove(8, positions, startSecondIndex, finalSecondIndex);
+    int finalSecondIndex = 8 - ((positions[3] - ANumber)*(-1));
+
+    printf("%d [%c] - %d [%c] \n", finalSecondIndex, positions[1], startSecondIndex, positions[2]);
+
+    int temp = checkMove(finalSecondIndex, startSecondIndex);
+    
+    ASSERT_EQUAL(res_error, temp);
+}
+
+CTEST(read_txt, checkUncorrect)
+{
+    FILE* file = fopen("checkUncorrect.txt", "r");
+    char positions[6];
+    fgets(positions, 6, file);
+    fclose(file);
+    
+    int ANumber = 56;
+    int ALetter = 96;
+    const int res_error = 0; 
+    int size = 9;
+    char a[size][size];
+    chess(a);
+    int startSecondIndex = 8 - ((positions[3] - ANumber)*(-1));
+    int startFirstIndex = positions[2] - ALetter;
+
+    int temp = check(startFirstIndex, startSecondIndex);
+    
+    ASSERT_EQUAL(res_error, temp);
+}
+
+
+
+CTEST(read_txt, checkCorrect)
+{
+    FILE* file = fopen("checkCorrect.txt", "r");
+    char positions[6];
+    fgets(positions, 6, file);
+    fclose(file);
+    
+    int ANumber = 56;
+    int ALetter = 96;
+    const int res_error = 1; 
+    int size = 9;
+    char a[size][size];
+    chess(a);
+    int startSecondIndex = 8 - ((positions[3] - ANumber)*(-1));
+    int startFirstIndex = positions[2] - ALetter;
+
+    int temp = check(startFirstIndex, startSecondIndex);
     
     ASSERT_EQUAL(res_error, temp);
 }
