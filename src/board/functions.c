@@ -1,43 +1,31 @@
 #include <stdio.h>
 
-int checkMove(int n, char firstpos[n], int SsecondIndex, int FsecondIndex)
+int checkMove(int startFirstIndex, int startSecondIndex)
 {
-    int ALetter = 96; // A - ASCII
-    if ((firstpos[0] - ALetter) == 2 || (firstpos[0] - ALetter) == 7 ){
-        int temp = SsecondIndex - FsecondIndex;
+    if (startSecondIndex == 7 || startSecondIndex == 2){
+        int temp = startSecondIndex - startFirstIndex;
         if (temp > 2){
-            printf("Фигура не можешь ходить >2 шагов");
-            return 0;
-        }
-        if (temp == 0){
-            printf("Фигура не делает шаг");
-            return 0;
-        }
-    } else return 1;
-    
+            return 1;
+        } else if (temp == 0){
+            return 1;
+        } else return 0;
+    }  
     return 0;
 }
 
-
-
-void check(int FirstIndex, int startSecond)
+int check(int FirstIndex, int startSecond)
 {
     if (FirstIndex < 0){
-        printf("Ошибка, выход за границу шахматной доски\n");
-        return;
-    }
-    if (startSecond < 0){
-        printf("Ошибка, выход за границу шахматной доски\n");
-        return;
-    }
-    if (FirstIndex > 8){
-        printf("Ошибка, выход за границу шахматной доски\n");
-        return;
-    }
-    if (startSecond > 8){
-        printf("Ошибка, выход за границу шахматной доски\n");
-        return;
-    }    
+        return 0;
+    } else if (startSecond < 0){
+        return 0;
+    } else if (FirstIndex > 8){
+        return 0;
+    } else if (startSecond > 8){
+        return 0;
+    } else return 1;   
+
+    return 3;
 }
 
 void swap(int size, char a[size][size], int n,  char firstpos[n], char secondpos[n])
@@ -48,26 +36,24 @@ void swap(int size, char a[size][size], int n,  char firstpos[n], char secondpos
     int startSecondIndex = 8 - ((firstpos[1] - ANumber)*(-1));
     
     check(startFirstIndex, startSecondIndex);
-
-    printf("%d - %d\n",startFirstIndex, startSecondIndex);
-    printf("%c\n", a[startSecondIndex][startFirstIndex]);
     
     int finalFirstIndex = secondpos[0] - ALetter;
     int finalSecondIndex = 8 - ((secondpos[1] - ANumber)*(-1));
+
+    if (check(finalFirstIndex, finalSecondIndex) == 0){
+        printf("Выход на за границу поля\n");
+    }
     
-    check(finalFirstIndex, finalSecondIndex);
-    checkMove(n, firstpos, startSecondIndex, finalSecondIndex);
-
-
-
-    printf("%c\n", a[finalSecondIndex][finalFirstIndex]);
-
-    if (a[finalSecondIndex][finalFirstIndex] == ' '){
-        a[finalSecondIndex][finalFirstIndex] = a[startSecondIndex][startFirstIndex];
-        a[startSecondIndex][startFirstIndex] = ' ';
+    if (checkMove(finalSecondIndex, startSecondIndex) == 1){
+        printf("Данная фигура так ходить не может\n");
     }
 
-
+    if ((checkMove(finalSecondIndex, startSecondIndex)) != 1){
+        if (a[finalSecondIndex][finalFirstIndex] == ' '){
+            a[finalSecondIndex][finalFirstIndex] = a[startSecondIndex][startFirstIndex];
+            a[startSecondIndex][startFirstIndex] = ' ';
+    }
+    }
 }
 
 #include <stdio.h>
