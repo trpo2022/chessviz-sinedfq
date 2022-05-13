@@ -56,8 +56,7 @@ void swap(int size, char a[size][size], int n,  char firstpos[n], char secondpos
     }
 }
 
-#include <stdio.h>
-#include "functions.h"
+
 void chess(char a[][9])
 {
     a[0][0] = ' ';
