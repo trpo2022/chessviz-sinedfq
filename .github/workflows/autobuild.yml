@@ -16,4 +16,5 @@ jobs:
         run: make test
 
       - name: Run test
-        run: bin/test/./main
+        cd: bin/test
+        run: ./main
