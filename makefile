@@ -18,17 +18,15 @@ obj/src/main/functions.a: obj/src/main/functions.o
 
 test: bin/test/main
 
-bin/test/main: obj/test/board_test.a obj/test/main.o
+bin/test/main: obj/test/main.o obj/test/board_test.o
 	gcc -I $(CFLAGS) -o $@ $^ -lm 
 
-obj/test/board_test.o: test/board_test.c
-	gcc -c $(CCFLAGS) -o $@ $< -lm
-
-obj/test/board_test.a: test/board_test.o
-	gcc -c $(CCFLAGS) -o $@ $< -lm
-
 obj/test/main.o: test/main.c
-	gcc -c $(CCFLAGS) -o $@ $< -lm
+	gcc -c -I $(CCFLAGS) -o $@ $< -lm
+
+obj/test/board_test.o: test/board_test.c
+	gcc -c -I $(CCFLAGS) -o $@ $< -lm
+
 
 .PHONY: clean
 clean:
