@@ -11,3 +11,9 @@ jobs:
 
       - name: Build application
         run: make
+      
+      - name: Build autotest
+        run: make test
+
+      - name: Run test
+        run: bin/test/./main
