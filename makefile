@@ -18,7 +18,7 @@ obj/src/main/functions.a: obj/src/main/functions.o
 
 test: bin/test/main
 
-bin/test/main: obj/test/main.o obj/test/board_test.o
+bin/test/main: obj/test/main.o obj/test/board_test.o obj/src/main/functions.a
 	gcc -I $(CFLAGS) -o $@ $^ -lm 
 
 obj/test/main.o: test/main.c
