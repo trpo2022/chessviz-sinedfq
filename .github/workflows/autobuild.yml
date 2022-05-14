@@ -14,7 +14,3 @@ jobs:
       
       - name: Build autotest
         run: make test
-
-      - name: Run test
-        path: bin/test
-        run: main
